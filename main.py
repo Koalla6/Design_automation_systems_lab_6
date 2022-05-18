@@ -28,7 +28,7 @@ def Initial_Conditions():
     field_list = []
     # print("Initial_Conditions")
     field_list.append(field)
-    print("\n\t\tІтерація №", iter)
+    # print("\n\t\tІтерація №", iter)
     Print_Field(field_list[-1])
     Selection_Of_Items(matr, vertexes, field, iter, field_list)
 
@@ -42,6 +42,7 @@ def Print_Field(field_list):
 
 def Selection_Of_Items(matr, vertexes, field, iter, field_list):
     # print("Selection_Of_Items")
+    ways = []
     sum = []
     for i in range(len(vertexes)):
         sum.append(0)
@@ -66,10 +67,21 @@ def Selection_Of_Items(matr, vertexes, field, iter, field_list):
 
     i = 0
     while i < len(sum):
-        # changeVertexes = vertexes.copy()
         for j in range(len(sum)):
-            if matr[sum.index(sum[0])][j] != 0:
+            # if matr[sum.index(sum[0])][j] != 0:
+            print(vertexes[0], vertexes[-1], [vertexes[0], vertexes[-1]] not in ways)
+            if matr[sum.index(sum[0])][vertexes.index(vertexes[-1])] != 0 and [vertexes[0], vertexes[-1]] not in ways:
                 # print(matr[sum.index(sum[0])][j], "-", sum.index(sum[0])+1, ",", j+1)
+                print("\n\t\tІтерація №", iter)
+                print("Проведемо шлях від ", vertexes[0], "до", vertexes[-1])
+                ways.append([vertexes[0], vertexes[-1]])
+                iter += 1
+                # changeVertexes.remove(changeVertexes[j])
+                field_list = Construction_Of_Routes(matr, vertexes, field, iter, field_list, vertexes[0], vertexes[-1])
+                # Construction_Of_Routes(matr, vertexes, field, iter, field_list, vertexes[0], vertexes[j])
+            elif matr[sum.index(sum[0])][j] != 0 and vertexes[j] != vertexes[-1]:
+                # print(matr[sum.index(sum[0])][j], "-", sum.index(sum[0])+1, ",", j+1)
+                print("\n\t\tІтерація №", iter)
                 print("Проведемо шлях від ", vertexes[0], "до", vertexes[j])
                 iter += 1
                 # changeVertexes.remove(changeVertexes[j])
@@ -334,7 +346,7 @@ def Replace_Numbers(temporary_field, max, maxij, iter, point1, vertexes):
 
     print("\tВага шляху:", sum)
 
-    print("\n\t\tІтерація №", iter)
+
     Print_Field(temporary_field)
     return temporary_field
 
