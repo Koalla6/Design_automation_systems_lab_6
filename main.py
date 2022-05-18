@@ -69,7 +69,7 @@ def Selection_Of_Items(matr, vertexes, field, iter, field_list):
     while i < len(sum):
         for j in range(len(sum)):
             # if matr[sum.index(sum[0])][j] != 0:
-            print(vertexes[0], vertexes[-1], [vertexes[0], vertexes[-1]] not in ways)
+            # print(vertexes[0], vertexes[-1], [vertexes[0], vertexes[-1]] not in ways)
             if matr[sum.index(sum[0])][vertexes.index(vertexes[-1])] != 0 and [vertexes[0], vertexes[-1]] not in ways:
                 # print(matr[sum.index(sum[0])][j], "-", sum.index(sum[0])+1, ",", j+1)
                 print("\n\t\tІтерація №", iter)
@@ -345,7 +345,6 @@ def Replace_Numbers(temporary_field, max, maxij, iter, point1, vertexes):
                 temporary_field[y][x] = point1
 
     print("\tВага шляху:", sum)
-
 
     Print_Field(temporary_field)
     return temporary_field
